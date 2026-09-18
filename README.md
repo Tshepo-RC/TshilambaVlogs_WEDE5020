@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Tshilamba Vlogs
 
 A five-page website for **Tshilamba Vlogs**, a South African streetwear clothing brand, built as part of the WEDE5020 Portfolio of Evidence.
@@ -68,3 +69,6 @@ An external stylesheet (`style.css`) was created and linked to all five HTML pag
 - Mozilla Developer Network (MDN). *Flexbox.* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flexible_box_layout
 - Mozilla Developer Network (MDN). *Using media queries.* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries
 - W3Schools. *CSS Tutorial.* https://www.w3schools.com/css/
+=======
+# TshilambaVlogs_WEDE5020
+>>>>>>> 24416be81a33e1c0852f208450d7b9f22ecb9466
