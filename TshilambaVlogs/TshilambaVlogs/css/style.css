@@ -1,0 +1,524 @@
+/* ==========================================================================
+   Tshilamba Vlogs — style.css
+   Part 2: CSS Styling and Responsive Design
+   Author: Tshepo Kekae Kgolagano
+   ==========================================================================
+   Contents:
+   1. CSS Reset / Base
+   2. Colour Scheme & Custom Properties
+   3. Typography
+   4. Layout (Header, Nav, Main, Footer)
+   5. Components (Hero, Cards, Forms)
+   6. Responsive Design (Media Queries)
+   ========================================================================== */
+
+
+/* ==========================================================================
+   1. CSS RESET / BASE
+   A small reset keeps rendering consistent across browsers so the rest of
+   the stylesheet behaves predictably.
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* ==========================================================================
+   2. COLOUR SCHEME & CUSTOM PROPERTIES
+   A small, disciplined palette keeps the streetwear brand feeling clean
+   and confident: near-black, off-white and a single warm accent colour.
+   ========================================================================== */
+:root {
+    --color-bg: #ffffff;
+    --color-bg-alt: #f5f4f2;
+    --color-text: #1a1a1a;
+    --color-text-muted: #55524d;
+    --color-primary: #111111;
+    --color-accent: #d98c2b;
+    --color-accent-dark: #b3701c;
+    --color-border: #e0ddd7;
+    --color-white: #ffffff;
+
+    --font-heading: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    --font-body: 'Segoe UI', Tahoma, Verdana, sans-serif;
+
+    --max-width: 75rem;      /* 1200px */
+    --radius: 0.5rem;
+    --transition: 0.2s ease-in-out;
+}
+
+
+/* ==========================================================================
+   3. TYPOGRAPHY
+   A simple typographic scale using rem for consistent, scalable sizing.
+   ========================================================================== */
+body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    letter-spacing: 0.01em;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+}
+
+h1 {
+    font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2rem);
+}
+
+h2 {
+    font-size: clamp(1.35rem, 1.1rem + 1vw, 1.75rem);
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 3rem;
+    height: 0.2rem;
+    background-color: var(--color-accent);
+}
+
+h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--color-text-muted);
+    max-width: 65ch;
+}
+
+strong {
+    color: var(--color-text);
+}
+
+
+/* ==========================================================================
+   4. LAYOUT — HEADER, NAV, MAIN, FOOTER
+   Flexbox drives the header/nav and footer; CSS Grid drives multi-card
+   content sections further down. Content is capped at --max-width and
+   centred, with consistent side padding using relative units.
+   ========================================================================== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+}
+
+header nav {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+}
+
+header nav h1 {
+    font-size: 1.25rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+header nav ul {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+header nav ul li a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.25rem 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color var(--transition), color var(--transition);
+}
+
+header nav ul li a:hover,
+header nav ul li a:focus {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+}
+
+main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+main > section {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+main > section:last-child {
+    border-bottom: none;
+}
+
+footer {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    margin-top: 2rem;
+}
+
+footer > * {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+}
+
+footer h2 {
+    color: var(--color-white);
+    font-size: 1.1rem;
+}
+
+footer h2::after {
+    background-color: var(--color-accent);
+}
+
+footer p {
+    color: #cfcdc8;
+}
+
+footer a {
+    font-weight: 600;
+    transition: color var(--transition);
+}
+
+footer a:hover,
+footer a:focus {
+    color: var(--color-accent);
+}
+
+
+/* ==========================================================================
+   5. COMPONENTS
+   ========================================================================== */
+
+/* --- Hero (index.html) -------------------------------------------------- */
+.hero {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 3rem 0;
+    flex-wrap: wrap;
+}
+
+.hero-content {
+    flex: 1 1 20rem;
+}
+
+.hero-image {
+    flex: 1 1 18rem;
+}
+
+.hero-image img {
+    border-radius: var(--radius);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+    width: 100%;
+}
+
+.hero h2 {
+    font-size: clamp(1.75rem, 1.2rem + 2vw, 2.5rem);
+}
+
+.hero h2::after {
+    display: none;
+}
+
+.button {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.9rem;
+    transition: background-color var(--transition), transform var(--transition);
+}
+
+.button:hover,
+.button:focus {
+    background-color: var(--color-accent-dark);
+    transform: translateY(-0.15rem);
+}
+
+/* --- Card grids (featured products, values, product categories) --------- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.5rem;
+}
+
+.card-grid article {
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card-grid article:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.08);
+}
+
+.card-grid article img {
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.card-grid article p:last-child {
+    font-weight: 700;
+    color: var(--color-accent-dark);
+    margin-bottom: 0;
+}
+
+/* --- Reasons list (Why Choose Us) --------------------------------------- */
+.reasons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    gap: 1rem;
+}
+
+.reasons li {
+    background-color: var(--color-bg-alt);
+    border-left: 0.25rem solid var(--color-accent);
+    padding: 1rem 1.25rem;
+    font-weight: 600;
+    border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+/* --- Address / contact details ------------------------------------------ */
+address {
+    font-style: normal;
+    display: grid;
+    gap: 0.5rem;
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    max-width: 30rem;
+}
+
+/* --- Map (contactus.html) ------------------------------------------------ */
+.map {
+    position: relative;
+    width: 100%;
+    max-width: 45rem;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+}
+
+.map iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* --- Forms (inquiry.html, contactus.html) -------------------------------- */
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem 1.5rem;
+    max-width: 40rem;
+}
+
+form p {
+    margin-bottom: 0;
+    max-width: none;
+}
+
+form p.full-width {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    font: inherit;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    background-color: var(--color-white);
+    color: var(--color-text);
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 0.2rem rgba(217, 140, 43, 0.2);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 8rem;
+}
+
+button {
+    font: inherit;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color var(--transition), transform var(--transition);
+}
+
+button[type="submit"] {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+    background-color: var(--color-accent-dark);
+    transform: translateY(-0.1rem);
+}
+
+button[type="reset"] {
+    background-color: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+}
+
+button[type="reset"]:hover,
+button[type="reset"]:focus {
+    border-color: var(--color-primary);
+}
+
+
+/* ==========================================================================
+   6. RESPONSIVE DESIGN
+   Breakpoints:
+   - Tablet:  max-width 48rem  (~768px)
+   - Mobile:  max-width 30rem  (~480px)
+   The layout is desktop-first; these queries progressively simplify the
+   grid/flex layouts down to a single column for smaller screens.
+   ========================================================================== */
+
+/* --- Tablet (≤768px): nav wraps, hero stacks, forms go single column --- */
+@media (max-width: 48rem) {
+    header nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header nav ul {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 1rem 1.25rem;
+    }
+
+    .hero {
+        flex-direction: column-reverse;
+        text-align: center;
+        padding: 2rem 0;
+    }
+
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    form {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+
+    main > section {
+        padding: 2.25rem 0;
+    }
+}
+
+/* --- Mobile (≤480px): single-column cards, tighter spacing, smaller type - */
+@media (max-width: 30rem) {
+    header nav ul {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .card-grid,
+    .reasons {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        padding: 0 1rem;
+    }
+
+    footer > * {
+        padding: 2rem 1rem;
+    }
+
+    address {
+        max-width: 100%;
+    }
+}

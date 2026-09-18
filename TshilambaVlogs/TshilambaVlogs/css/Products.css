@@ -1,0 +1,309 @@
+/* ==========================================================================
+   Tshilamba Vlogs — product.css
+   Stylesheet for the Products page (Products.html)
+   Part 2: CSS Styling and Responsive Design
+   Author: Tshepo Kekae Kgolagano
+   ========================================================================== */
+
+/* ==========================================================================
+   1. CSS RESET / BASE
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+
+/* ==========================================================================
+   2. COLOUR SCHEME & CUSTOM PROPERTIES
+   ========================================================================== */
+:root {
+    --color-bg: #ffffff;
+    --color-bg-alt: #f5f4f2;
+    --color-text: #1a1a1a;
+    --color-text-muted: #55524d;
+    --color-primary: #111111;
+    --color-accent: #d98c2b;
+    --color-accent-dark: #b3701c;
+    --color-border: #e0ddd7;
+    --color-white: #ffffff;
+
+    --font-heading: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    --font-body: 'Segoe UI', Tahoma, Verdana, sans-serif;
+
+    --max-width: 75rem;
+    --radius: 0.5rem;
+    --transition: 0.2s ease-in-out;
+}
+
+
+/* ==========================================================================
+   3. TYPOGRAPHY
+   ========================================================================== */
+body {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    letter-spacing: 0.01em;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.25;
+    letter-spacing: 0.02em;
+}
+
+h1 {
+    font-size: clamp(1.5rem, 1.1rem + 1.5vw, 2rem);
+}
+
+h2 {
+    font-size: clamp(1.35rem, 1.1rem + 1vw, 1.75rem);
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+h2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 3rem;
+    height: 0.2rem;
+    background-color: var(--color-accent);
+}
+
+h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--color-text-muted);
+    max-width: 65ch;
+}
+
+
+/* ==========================================================================
+   4. LAYOUT — HEADER, NAV, MAIN, FOOTER
+   ========================================================================== */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+}
+
+header nav {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+}
+
+header nav h1 {
+    font-size: 1.25rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+header nav ul {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+header nav ul li a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.25rem 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color var(--transition), color var(--transition);
+}
+
+header nav ul li a:hover,
+header nav ul li a:focus {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+}
+
+main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+main > section {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+main > section:last-child {
+    border-bottom: none;
+}
+
+footer {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    margin-top: 2rem;
+}
+
+footer > * {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem;
+}
+
+footer h2 {
+    color: var(--color-white);
+    font-size: 1.1rem;
+}
+
+footer h2::after {
+    background-color: var(--color-accent);
+}
+
+footer p {
+    color: #cfcdc8;
+}
+
+footer a {
+    font-weight: 600;
+    transition: color var(--transition);
+}
+
+footer a:hover,
+footer a:focus {
+    color: var(--color-accent);
+}
+
+
+/* ==========================================================================
+   5. PRODUCTS PAGE COMPONENTS
+   ========================================================================== */
+.button {
+    display: inline-block;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.9rem;
+    transition: background-color var(--transition), transform var(--transition);
+}
+
+.button:hover,
+.button:focus {
+    background-color: var(--color-accent-dark);
+    transform: translateY(-0.15rem);
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.5rem;
+}
+
+.card-grid article {
+    background-color: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    max-width: 20rem;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.card-grid article:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.08);
+}
+
+.card-grid article img {
+    border-radius: var(--radius);
+    margin-bottom: 1rem;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+.card-grid article p:last-child {
+    font-weight: 700;
+    color: var(--color-accent-dark);
+    margin-bottom: 0;
+}
+
+
+/* ==========================================================================
+   6. RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 48rem) {
+    header nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header nav ul {
+        width: 100%;
+        justify-content: flex-start;
+        gap: 1rem 1.25rem;
+    }
+
+    main > section {
+        padding: 2.25rem 0;
+    }
+}
+
+@media (max-width: 30rem) {
+    header nav ul {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        padding: 0 1rem;
+    }
+
+    footer > * {
+        padding: 2rem 1rem;
+    }
+}
